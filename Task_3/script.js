@@ -1,7 +1,7 @@
 'use strict';
 
 const user = getPersonData();
-alert(user);
+user.showPersonData();
 
 function getPersonData() {
     const person = {
@@ -9,8 +9,8 @@ function getPersonData() {
         lastName: prompt('What is your last name?'),
         age: +prompt('What is your age?'),
 
-        toString() {
-            return `${this.firstName.toUpperCase()} ${this.lastName.toUpperCase()}, age: ${this.age}`;
+        showPersonData() {
+            alert(`${this.firstName.toUpperCase()} ${this.lastName.toUpperCase()}, age: ${this.age}`);
         }
     };
     return person;
