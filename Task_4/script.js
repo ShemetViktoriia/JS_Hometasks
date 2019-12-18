@@ -5,15 +5,12 @@ const expression = {
     leftOperand: getOperand('Enter left operand'),
     rightOperand: getOperand('Enter right operand'),
 
-    toString() {
-        return `${this.leftOperand}` +
-            `${this.operator}` +
-            `${this.rightOperand > 0 ? this.rightOperand : '(' + this.rightOperand + ')'} =` +
-            `${calculateResult(this.operator, this.leftOperand, this.rightOperand)}`;
+    showResult: function () {
+        alert(`${this.leftOperand} ${this.operator}  ${this.rightOperand >= 0 ? this.rightOperand : `(` + this.rightOperand + `)`} =  ${calculateResult(this.operator, this.leftOperand, this.rightOperand)}`);
     }
 };
 
-alert(`${expression}`);
+expression.showResult();
 
 function getOperator() {
     const operators = ['+', '-', '*', '/', '%'];
