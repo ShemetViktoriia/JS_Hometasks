@@ -3,32 +3,30 @@
 const userInput = getUserInput();
 
 // split string by commas and delete empties
-const arrayOfNumbers = userInput.split(',') // split string by commas
-    .filter((item) => item.trim() !== '')   // trim split parts and select not empties
-    .map((item) => +item)                   // try to convert to Number
-    .filter((item) => item === +item);      // select only numbers
+const arrayOfNumbers = userInput
+    .split(',') // split string by commas
+    .filter((item) => !isNaN(item) && item.trim() !== '')   // trim split parts and select not empties
+    .map(Number)                   // try to convert to Number
 
 if (arrayOfNumbers.length != 0) {
-    alert(`Max = ${getMax(arrayOfNumbers)}`);
-    alert(`Sum = ${getSum(arrayOfNumbers)}`);
-    alert(`Even numbers ={${getEvenNumbers(arrayOfNumbers)}}`);
+    alert(`Max = ${calculateMax(arrayOfNumbers)}`);
+    alert(`Sum = ${calculateSum(arrayOfNumbers)}`);
+    alert(`Even numbers ={${calculateEvenNumbers(arrayOfNumbers)}}`);
 }
 else {
     alert(`You didn't enter number(s) `);
 }
 
-function getMax(array) {
+function calculateMax(array) {
     return Math.max.apply(null, array);
 }
 
-function getSum(array) {
-    const result = array.reduce((sum, current) => sum + current);
-    return result;
+function calculateSum(array) {
+    return array.reduce((sum, current) => sum + current);
 }
 
-function getEvenNumbers(array) {
-    const arrayEvenNumbers = array.filter((item) => item % 2 === 0);
-    return arrayEvenNumbers;
+function calculateEvenNumbers(array) {
+    return array.filter((item) => item % 2 === 0);
 }
 
 function getUserInput() {
