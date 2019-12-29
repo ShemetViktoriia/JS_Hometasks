@@ -18,11 +18,12 @@ else {
 }
 
 function calculateMax(array) {
-    return Math.max.apply(null, array);
+    // return Math.max.apply(null, array); // first approach
+    return array.sort()[array.length-1]; // second approach
 }
 
 function calculateSum(array) {
-    return array.reduce((sum, current) => sum + current);
+    return array.reduce((sum, current) => sum + current, 0);
 }
 
 function calculateEvenNumbers(array) {
