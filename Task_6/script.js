@@ -12,7 +12,7 @@ do {
 
 do {
     num = prompt('Enter number of operands');
-} while (num.trim() === '' || !Number.isInteger(+num) || +num < 1 || +num > 4);
+} while (num === '' || !Number.isInteger(+num) || +num < 1 || +num > 4);
 
 num = Number(num);
 
