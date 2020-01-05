@@ -11,15 +11,8 @@ do {
 } while (arrayOperators.indexOf(operator) == -1);
 
 do {
-<<<<<<< HEAD
     num = +prompt('Enter number of operands');
-} while (isNaN(num) || (num % 1) || num < 2 || num > 4);
-=======
-    num = prompt('Enter number of operands');
-} while (num === '' || !Number.isInteger(+num) || +num < 1 || +num > 4);
-
-num = Number(num);
->>>>>>> 2d293af96dffdfed48a1504eab3dc62e0a2a68ba
+} while (isNaN(num) || (num%1) || num < 1 || num > 4);
 
 for (let i = 0; i < num; i++) {
     do {
