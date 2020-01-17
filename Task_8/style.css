@@ -1,0 +1,7 @@
+.card-body {
+    background-color: #ffc107;
+}
+
+.card-body.marked {
+    background-color: #28a745;
+}
