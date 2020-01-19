@@ -3,7 +3,7 @@
 const calculator = createCalculator(10);
 
 function createCalculator(number) {
-    this.baseValue = number;
+    baseValue = number;
 
     return {
         add: function(value){
