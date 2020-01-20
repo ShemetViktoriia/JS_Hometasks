@@ -3,34 +3,32 @@
 const calculator = createCalculator(10);
 
 function createCalculator(number) {
-    baseValue = number;
-
     return {
         add: function(value){
-            return baseValue + value;
+            return number + value;
         },
         
         sub: function(value){
-            return baseValue - value;
+            return number - value;
         },   
         
         divide: function(value){
-            return baseValue / value;
+            return number / value;
         },  
 
         mult: function(value){
-            return baseValue * value;
+            return number * value;
         }, 
 
         set: function(value){
-            baseValue = value;
-        }, 
+            number = value;
+        }
 
-        // add: (value) => baseValue + value,  
-        //sub: (value) => baseValue - value,
-        //divide: (value) => baseValue / value,
-        //mult: (value) => baseValue * value,
-        //set: (value) => baseValue = value
+        // add: (value) => number + value,  
+        // sub: (value) => number - value,
+        // divide: (value) => number / value,
+        // mult: (value) => number * value,
+        // set: (value) => number = value
     };
 }
 
