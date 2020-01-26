@@ -3,35 +3,31 @@
 function Student(name, marks) {
     this.name = name;
     this.marks = marks;
-    this.averageMark = function () {
-        return average(marks);
-    };
-    this.minMark = function () {
-        return Math.min.apply(null, marks);
-    };
-    this.maxMark = function () {
-        return Math.max.apply(null, marks);
-    };
+}
+
+Student.prototype.averageMark = function () {
+    return average(this.marks);
+}
+
+Student.prototype.maxMark = function () {
+    return Math.max.apply(null, this.marks);
+}
+
+Student.prototype.minMark = function () {
+    return Math.min.apply(null, this.marks)
 }
 
 function averageMark(students) {
-    const studentMarks = reduce(students, function (result, curr) {
-        return result.concat(curr.marks);
-    }, []);
+    let studentMarks = [];
+    for (let i = 0; i < students.length; i++) {
+        studentMarks = studentMarks.concat(students[i].marks);
+    }
     return average(studentMarks);
 }
 
-function reduce(arr, callback, startValue) {
-    let result = startValue;
-    for (let i = 0; i < arr.length; i++) {
-        result = callback.call(null, result, arr[i], i, arr);
-    }
-    return result;
-};
-
 function average(arr) {
     return arr.reduce((sum, curr) => (sum + curr)) / arr.length;
-};
+}
 
 const students = [
     new Student('Student 1', [10, 9, 8, 0, 10]),
