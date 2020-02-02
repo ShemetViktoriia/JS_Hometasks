@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_14</title>
+    <script src="script.js" async></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <h1>Simple ToDo List</h1>
+        <br>
+        <form  id="addTaskForm"> 
+            <div class="form-row">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Task description" id="taskDesc">
+                    <p class="text-danger" id="valMessage"></p>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary" id="taskAdd">Add</button>
+                </div>
+            </div>
+        </form>
+        <hr />
+
+        <div id="taskList">
+
+        </div>
+
+        <script type="text/template" id="taskTemplate">
+            <div class="card task">{{desc}}</div>
+        </script>
+    </div>
+</body>
+
+</html>

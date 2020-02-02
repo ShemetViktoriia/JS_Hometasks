@@ -1,0 +1,13 @@
+.taskList {
+    margin-bottom: 20px;
+}
+
+.task {
+    padding: 10px 20px;
+    margin: 5px 0;
+    background-color: lightyellow;
+}
+
+.task.completed {
+    background-color: lightgreen;
+}
