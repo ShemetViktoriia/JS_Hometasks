@@ -81,8 +81,8 @@ function populateToDoList() {
             }
         }
         )
-        .then(task => {
-            task.forEach(task => {
+        .then(data => {
+            data.forEach(task => {
                 generateNewTask(task)
             });
         })
