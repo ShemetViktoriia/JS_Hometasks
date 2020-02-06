@@ -46,13 +46,12 @@ function onTaskListClick(e) {
 }
 
 function generateNewTask(task) {
-    const htmlTemplate = taskTemplate.replace('{{desc}}', task.title);
+    const htmlTemplate = taskTemplate
+      .replace('{{desc}}', task.title)
+      .replace('{{completeClass}}', task.completed ? 'completed' : '');
     const newTaskEl = htmlToElement(htmlTemplate);
-    if(task.completed){
-        toggleTaskState(newTaskEl);
-    }
     taskList.appendChild(newTaskEl);
-}
+   }   
 
 function getTaskDesc() {
     return taskDescElement.value;
