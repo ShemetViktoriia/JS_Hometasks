@@ -8,7 +8,7 @@ const albumTemplate = document.querySelector('#albumItemTemplate').innerHTML;
 const photoListElement = document.querySelector('#photoList');
 const photoTemplate = document.querySelector('#photoItemTemplate').innerHTML;
 
-albumListElement.addEventListener('click', onTaskListClick);
+albumListElement.addEventListener('click', onAlbumListClick);
 
 getAlbums();
 
@@ -72,7 +72,7 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
-function onTaskListClick(e) {
+function onAlbumListClick(e) {
     unselectAllAlbums();
     deletePhotoElements();
     const classList = e.target.classList;
