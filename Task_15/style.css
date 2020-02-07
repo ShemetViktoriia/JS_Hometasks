@@ -1,0 +1,21 @@
+.albumList {
+    margin-bottom: 20px;
+}
+
+.album-item {
+    padding: 10px 20px;
+    margin: 5px 0;
+    background-color: lightyellow;
+}
+
+.album-item.choosed {
+    background-color: lightgreen;
+}
+
+img { 
+    width:200px;
+    height:auto;
+    padding: 10px 20px;
+    margin: 5px 0;
+    float:left; 
+}
