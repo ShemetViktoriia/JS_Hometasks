@@ -9,7 +9,7 @@ const UPDATE_BTN_CLASS = 'btn-update';
 const userForm = document.getElementById('userForm');
 const userList = document.getElementById('userList');
 const userItemTemplate = document.getElementById('userItemTemplate').innerHTML;
-const inputs = document.querySelectorAll('.user-input');
+const inputsAdd = document.querySelectorAll('.user-input');
 
 let users = [];
 
@@ -109,8 +109,8 @@ function updateUser(id) {
 }
 
 function submitUserForm() {
-    if (isInputsValid(inputs)) {
-        const user = getUserForm();
+    if (isInputsValid(inputsAdd)) {
+        const user = getUserFromInputs();
 
         fetch(USERS_URL, {
             method: 'POST',
@@ -130,16 +130,8 @@ function addUser(user) {
     renderUsers(users);
 }
 
-function getUserForm() {
-    return {
-        name: inputs[0].value,
-        surname: inputs[1].value,
-        email: inputs[2].value,
-    };
-}
-
 function getUserFromInputs(userId) {
-    const userInputArray = getUserInputElements(userId);
+    const userInputArray = userId===undefined? inputsAdd: getUserInputElements(userId);
     return {
         name: userInputArray[0].value,
         surname: userInputArray[1].value,
