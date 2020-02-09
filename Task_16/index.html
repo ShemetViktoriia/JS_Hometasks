@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_9</title>
+    <script src="app.js" async></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>User list</h1>
+        <form id="userForm" class="form">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="userList"></tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <input type="text" class="user-input form-control" placeholder="First Name"
+                                id="firstName" />
+                        </td>
+                        <td>
+                            <input type="text" class="user-input form-control" placeholder="Last Name"
+                                id="lastName" />
+                        </td>
+                        <td>
+                            <input type="text" class="user-input form-control" placeholder="Email" id="email" />
+                        </td>
+                        <td><button id="addPersonBtn" type="submit" class="btn btn-success">Add</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+
+    <script type="text/template" id="userItemTemplate">
+        <tr class="user-item" data-id="{{id}}">
+            <td><input type="text" class="user-input form-control" placeholder="First Name"
+                id="firstName" value="{{firstName}}" disabled/>
+            </td>
+            <td><input type="text" class="user-input form-control" placeholder="First Name"
+                id="firstName" value="{{lastName}}" disabled/>
+            </td>
+            <td><input type="text" class="user-input form-control" placeholder="First Name"
+                id="firstName" value="{{email}}" disabled/>
+            </td>
+            <td><button type="button" class="btn btn-danger btn-delete">Delete</button></td>
+            <td><button type="button" class="btn btn-warning btn-update">Save</button></td>
+        </tr>
+    </script>
+</body>
+
+</html>
