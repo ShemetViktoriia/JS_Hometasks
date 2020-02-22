@@ -1,0 +1,34 @@
+.tabset-wrapper {
+    width: 100%;
+}
+
+.tabset-title {
+    display: inline-block;
+    padding: 20px 20px 0;
+    cursor: pointer;
+}
+
+.tabset-title.active {
+    border-bottom: 3px solid red;
+}
+
+.tabset-content {
+    padding: 20px;
+    display: none;
+}
+
+.tabset-content.active {
+    display: block;
+}
+
+.tabset-buttons {
+    float: right;
+}
+
+.tabset-button {
+    border: 1px solid lightyellow;
+    cursor: pointer;
+    padding: 5px;
+    margin: 2px;
+    font-size: 20px;
+}

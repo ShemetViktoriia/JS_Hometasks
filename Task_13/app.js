@@ -1,0 +1,1 @@
+const myTabset = new Tabset(document.getElementById('container'));
