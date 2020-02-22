@@ -2,10 +2,13 @@
 
 const SERVER_URL = 'http://5e4ed6e26272aa001423102a.mockapi.io/todos';
 
+const $list = $('.js-todo-list'); 
+
 let todoItems = [];
 
-$('.js-form').submit(onToDoFormSubmit);
-$('.js-todo-list').click(onToDoListClick);
+$('.js-form').on('submit', onToDoFormSubmit);
+$list.on('click', '.js-tick', onTodoClickClick);
+$list.on('click', '.js-delete-todo', onDeleteBtnClick);
 
 init();
 
@@ -37,18 +40,14 @@ function resetForm($input) {
     $input.focus();
 }
 
-function onToDoListClick(event) {
-    const $target = $(event.target);
-    const itemKey = $target.parent().data('key');
-    switch (true) {
-        case $target.hasClass('js-tick'):
-            updateTodo(itemKey);
-            break;
+function onTodoClickClick(e) {
+    updateTodo($(this).parent().data('key'));
+}
 
-        case $target.hasClass('js-delete-todo'):
-            deleteTodo(itemKey);
-            break;
-    }
+
+function onDeleteBtnClick(e) {
+    e.stopPropagation();
+    deleteTodo($(this).parent().data('key'));
 }
 
 function init() {
@@ -68,7 +67,7 @@ function setTodos(data) {
 
 function renderTodos(data) {
     const listToDoHtml = data.map(generateToDoHtml).join('\n');
-    $('.js-todo-list').html(listToDoHtml);
+    $list.html(listToDoHtml);
 }
 
 function generateToDoHtml(todo) {
@@ -87,7 +86,7 @@ String.prototype.replaceAll = function (find, replace) {
 function addTodo(todo) {
     todoItems.push(todo);
 
-    $('.js-todo-list').append(generateToDoHtml(todo));
+    $list.append(generateToDoHtml(todo));
 }
 
 function deleteTodo(id) {
@@ -100,7 +99,6 @@ function deleteTodo(id) {
     $(`[data-key='${id}']`).remove();
 
     // select the list element and trim all whitespace once there are no todo items left
-    const $list = $('.js-todo-list');
     if (todoItems.length === 0) {
         $list.html('');
     }
