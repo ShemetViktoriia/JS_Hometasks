@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_19</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+    <script src="Storage.js" defer></script>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row heading">
+            <button id="addStickerBtn" class="button-primary">Add Sticker</button>
+            <button id="clearAllBtn">Clear All</button>
+        </div>
+        <div id="field">
+        </div>
+    </div>
+
+    <div id="dialog-form" title="New sticker">
+        <p class="validateTips">Field is required.</p>
+        <form>
+            <fieldset>
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" value=""
+                    class="text ui-widget-content ui-corner-all">
+
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+            </fieldset>
+        </form>
+    </div>
+
+    <script type="text/template" id="stickerTemplate">
+        <div>
+            <textarea class="textarea">{{description}}</textarea>
+        </div>
+    </script>
+    
+   
+
+</body>
+
+</html>
