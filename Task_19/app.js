@@ -1,15 +1,19 @@
 'use strict';
 
 const KEY = 'stickers';
-const STICKER_START_WIDTH = 200;
-const STICKER_START_HEIGHT = 150;
-const STICKER_START_OFFSET = { top: 100, left: 40 };
+const STICKER_START_SIZE = { width: 200, height: 150 };
+const STICKER_START_POSITION = { left: 50, top: 50 };
 
 const stock = new Storage(KEY);
+
 const $field = $('#field');
 const $stickerTemplate = $('#stickerTemplate');
+const $textArea = $('.textarea');
 
 let stickerList = [];
+let dialog, form,
+    description = $("#description"),
+    tips = $(".validateTips");
 
 init();
 
@@ -29,38 +33,43 @@ function renderList() {
 
 function renderSticker(sticker) {
     $(getNoteHtml(sticker))
-        .width(sticker.width)
-        .height(sticker.height)
+        .width(sticker.size.width)
+        .height(sticker.size.height)
         .draggable({
             cancel: "text",
             start: function () {
-                $('.textarea').focus();
+                $textArea.focus();
             },
-            stop: function () {
-                $('.textarea').focus();
-
+            stop: function (event, ui) {
+                $textArea.focus();
+                updateSticker(sticker.id, 'position', ui.position);
+                saveState();
             }
         })
         .resizable({
-            maxHeight: 2 * STICKER_START_HEIGHT,
-            maxWidth: 2 * STICKER_START_WIDTH,
-            minHeight: STICKER_START_HEIGHT,
-            minWidth: STICKER_START_WIDTH,
+            maxHeight: 2 * STICKER_START_SIZE.height,
+            maxWidth: 2 * STICKER_START_SIZE.width,
+            minHeight: STICKER_START_SIZE.height,
+            minWidth: STICKER_START_SIZE.width,
             animate: true,
-            stop: function (event, ui) {
-                updateSticker(sticker.id, 'width', ui.size.width);
-                updateSticker(sticker.id, 'height', ui.size.height);
+            resize: function (event, ui) {
+                updateSticker(sticker.id, 'size', ui.size);
                 saveState();
             }
         })
         .css({
-            'background-color': 'yellow',
+            'background-color': 'lightblue',
             'border-color': 'black',
-            'border-width': '1px',
-            'border-style': 'solid'
+            'border-width': '2px',
+            'border-style': 'solid',
+            'padding': '3px'
         })
-        .offset(STICKER_START_OFFSET)
-        .appendTo($field);
+        .offset(sticker.position)
+        .appendTo($field)
+        .on("input", function (event) {
+            updateSticker(sticker.id, 'description', $(event.target).val());
+            saveState();
+        });
 };
 
 function getNoteHtml(sticker) {
@@ -68,10 +77,6 @@ function getNoteHtml(sticker) {
         .html()
         .replace('{{description}}', sticker.description);
 }
-
-let dialog, form,
-    description = $("#description"),
-    tips = $(".validateTips");
 
 $('#addStickerBtn').on("click", function () {
     dialog.dialog("open");
@@ -121,8 +126,8 @@ function createSticker() {
     const sticker = {
         id: Date.now(),
         description: description.val(),
-        width: STICKER_START_WIDTH,
-        height: STICKER_START_HEIGHT
+        size: STICKER_START_SIZE,
+        position: STICKER_START_POSITION
     };
 
     stickerList.push(sticker);
